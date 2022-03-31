@@ -14,7 +14,9 @@ else
 	set.t_Co = 256
 end
 
+set.lazyredraw = true
 
+-- rnu if not in insert mode
 vim.cmd [[
 	augroup numbertoggle
 		autocmd!
@@ -22,4 +24,8 @@ vim.cmd [[
 		autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu                  | set nornu | endif
 	augroup END
 ]]
+
+
+-- Remove trailing whitespace on save
+vim.cmd [[autocmd BufWritePre * :%s/\s\+$//e]]
 
