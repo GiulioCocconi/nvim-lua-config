@@ -59,7 +59,7 @@ require('packer').startup(function()
 		requires = {
 			'SirVer/ultisnips',
 			requires = { 'honza/vim-snippets' },
-			config = 'require("plugins.snips").config'
+			config = 'require("plugins.snips").config()'
 		}
 	}
 
