@@ -2,14 +2,15 @@ local M = {}
 
 local utils = require('core.utils')
 
-local required_extensions= {
+local required_extensions = {
 	'coc-lists',
-	'coc-higlight',
-	'coc-utilsnips',
+	'coc-highlight',
+	'coc-ultisnips',
 }
 
 
 function M.setup()
+	utils.debug("Coc Setup started!")
 	local extensions_string = ""
 	for _, ext in ipairs(required_extensions) do
 		extensions_string = extensions_string .. ext .. " "

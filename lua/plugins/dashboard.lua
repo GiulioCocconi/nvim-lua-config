@@ -1,6 +1,7 @@
 local M = {}
 
 local utils = require('core.utils')
+local icon = utils.icons
 
 function M.config()
 	vim.g.dashboard_default_executive ='telescope'
@@ -14,20 +15,18 @@ function M.config()
 		'  ╚═════╝  ╚═╝  ╚═════╝ ╚═╝     ╚══════╝     ╚═╝  ╚═══╝   ╚═══╝   ╚═╝ ╚═╝     ╚═╝ ',
 	}
 
-	vim.g.dashboard_custom_footer = {
-		'',
-		"Config loaded :)" 
+	vim.g.dashboard_custom_section = {
+		a = {description = {icon.fileBg .. 'Find File          '}, command = 'Telescope find_files hidden=true'},
+		b = {description = {icon.fileCopy .. 'Recents            '}, command = 'Telescope oldfiles hidden=true'},
+		c = {description = {icon.timer ..        'Load Last Session  '}, command = 'SessionLoad'},
+		d = {description = {icon.container ..    'Sync Plugins       '}, command = 'PackerSync'},
+		e = {description = {icon.error ..    'Exit               '}, command = 'exit'},
 	}
 
-	utils.map_leader("ss", ":<C-u>SessionSave<CR>")
-	utils.map_leader("sl", ":<C-u>SessionLoad<CR>")
-
-	utils.map_leader("fh", ":DashboardFindHistory<CR>")
-	utils.map_leader("ff", ":DashboardFindFile<CR>")
-	utils.map_leader("tc", ":DashboardChangeColorscheme<CR>")
-	utils.map_leader("fa", ":DashboardFindWord<CR>")
-	utils.map_leader("fb", ":DashboardJumpMark<CR>")
-	utils.map_leader("cn", ":DashboardNewFile<CR>")
+	vim.g.dashboard_custom_footer = {
+		'',
+		"Config loaded :)"
+	}
 end
 
 return M
