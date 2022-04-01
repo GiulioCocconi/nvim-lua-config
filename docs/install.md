@@ -11,7 +11,7 @@ This config needs some dependences to work:
 ### How to install NeoVim
 You can install the official appImage running this command:
 ```
-sudo wget https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage -o /usr/bin/nvim
+sudo wget https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage -o /usr/bin/nvim && sudo chmod +x /usr/bin/nvim
 ```
 If you prefer you can also build it from source following [these](https://github.com/neovim/neovim/wiki/Building-Neovim) instructions.
 
@@ -29,6 +29,8 @@ With Debian/Ubuntu you can instead use the [NodeSource](https://github.com/nodes
 
 ## Install command
 You can install the config using this command:
-```git clone --depth=1 https://github.com/GiulioCocconi/nvim-lua-config ~/.config/nvim && nvim```
+```
+git clone --depth=1 https://github.com/GiulioCocconi/nvim-lua-config ~/.config/nvim && nvim
+```
 
 NeoVim will start to download the required plugins.
