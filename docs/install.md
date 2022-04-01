@@ -3,7 +3,7 @@
 **I don't recommend to install my config (especially without reading its code), you can copy the parts you like into yours instead**
 
 ## Deps
-This config needs some dependences to work:
+This config has some dependences:
 - NeoVim >= 0.6.0
 - node
 - ctags
