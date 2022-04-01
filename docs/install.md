@@ -33,4 +33,4 @@ You can install the config using this command:
 git clone --depth=1 https://github.com/GiulioCocconi/nvim-lua-config ~/.config/nvim && nvim
 ```
 
-NeoVim will start to download the required plugins.
+NeoVim will start to download the required plugins, after that you should restart it.
