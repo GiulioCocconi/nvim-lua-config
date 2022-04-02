@@ -89,7 +89,32 @@ function M.has(feature)
 	return vim.fn.has(feature) == 1
 end
 
+function M.open_file_external(f)
+	print(string.format([[ Opening '%s'... ]], f))
+	if M.has('unix') or M.has('mac') then
+		os.execute("xdg-open \"" .. f .. "\"")
+	elseif M.has('win32') then
+		os.execute("start \"" .. f .. "\"")
+	end
+end
+
+function M.new_scratch_buffer()
+	vim.cmd("enew")
+	vim.bo.buftype	= "nofile"
+	vim.bo.bufhidden = "hide"
+end
+
+
+function M.get_devdocs(str, lang)
+	local lang = lang or vim.bo.filetype
+	local base_url = "https://devdocs.io#q="
+	local url = string.format("%s%s %s", base_url, lang, str);
+
+	M.open_file_external(url)
+end
+
 -- Debug functions
+
 
 local function check_debug()
 	return M.file_exists(debug_file)
