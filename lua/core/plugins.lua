@@ -1,6 +1,7 @@
 local fn = vim.fn
 local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
+	print("Installing Packer...")
 	packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
 end
 
@@ -56,7 +57,6 @@ require('packer').startup(function()
 		config = [[ require("plugins.tree").config() ]]
 	}
 	use 'mg979/vim-visual-multi' --Multicursor
-	use 'rhysd/devdocs.vim'
 
 	--Greeter
 	use {
@@ -91,13 +91,14 @@ require('packer').startup(function()
 
 	-- Theme
 	use {
-		"sonph/onehalf",
-		rtp = "vim",
+		"drewtempelmeyer/palenight.vim",
 		requires = { "vim-airline/vim-airline" },
 		config = [[ require("plugins.theme").config() ]]
 	}
 
 	if packer_bootstrap then
+		print("Installing plugins and then quitting vim...")
+		vim.cmd[[ autocmd User PackerComplete quitall ]]
 		require('packer').sync()
 	end
 end)
