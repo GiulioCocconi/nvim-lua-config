@@ -1,8 +1,19 @@
-# Installation
+# GiulioCocconi's NeoVim Config
+
+These are my [NeoVim](https://neovim.io) config files.
+
+`init.lua` is the entrypoint and it loads the others `.lua` files in the `lua/core` directory.
+
+## Features
+
+- Useful bindings
+- ...
+
+## Installation
 
 **I don't recommend to install my config (especially without reading its code), you can copy the parts you like into yours instead**
 
-## Deps
+### Deps
 This config has some dependences:
 - NeoVim >= 0.6.0
 - node
@@ -42,7 +53,7 @@ Then run this command to install pynvim
 python3 -m pip install pynvim
 ```
 
-## Install the config
+### Install the config
 You can install the config using this command:
 ```
 git clone --depth=1 https://github.com/GiulioCocconi/nvim-lua-config ~/.config/nvim && nvim

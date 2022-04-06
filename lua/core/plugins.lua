@@ -1,7 +1,6 @@
 local fn = vim.fn
 local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
-	print("Installing Packer...")
 	packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
 end
 
@@ -97,8 +96,7 @@ require('packer').startup(function()
 	}
 
 	if packer_bootstrap then
-		print("Installing plugins and then quitting vim...")
-		vim.cmd[[ autocmd User PackerComplete quitall ]]
+		print("Installing plugins...")
 		require('packer').sync()
 	end
 end)

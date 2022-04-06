@@ -5,9 +5,9 @@ function M.config()
 	--vim.g.airline_theme='onehalfdark'
 
 	vim.cmd("colorscheme palenight")
+	vim.g.palenight_terminal_italics = 1
+
 	vim.g.airline_theme='palenight'
-
-
 	vim.g.airline_symbols_ascii = 1
 	vim.g["airline#extensions#tabline#enabled"] = 1
 end
