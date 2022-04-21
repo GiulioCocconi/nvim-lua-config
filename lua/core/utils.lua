@@ -92,7 +92,7 @@ end
 function M.open_file_external(f)
 	print(string.format([[ Opening '%s'... ]], f))
 	if M.has('unix') or M.has('mac') then
-		os.execute("xdg-open \"" .. f .. "\"")
+		os.execute("xdg-open \"" .. f .. "\" > /dev/null")
 	elseif M.has('win32') then
 		os.execute("start \"" .. f .. "\"")
 	end

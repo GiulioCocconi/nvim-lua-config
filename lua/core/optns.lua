@@ -8,6 +8,11 @@ set.tabstop = 4
 set.softtabstop = 4
 set.shiftwidth = 4
 
+set.splitbelow = true
+set.splitright = true
+
+set.mouse = 'a'
+
 if utils.has('termguicolors') then
 	set.termguicolors = true
 else
