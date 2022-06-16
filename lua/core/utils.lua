@@ -113,6 +113,10 @@ function M.get_devdocs(str, lang)
 	M.open_file_external(url)
 end
 
+-- Config function
+function M.isLangActive(lang) return require('config').languages[lang] ~= nil end
+
+
 -- Debug functions
 
 
@@ -177,6 +181,7 @@ end
 
 function M.plugin_sync()
 	require('core.plugins')
+	require('packer').clean()
 	require('packer').sync()
 end
 

@@ -1,5 +1,8 @@
+local utils = require("core.utils")
+
 local fn = vim.fn
 local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
+
 if fn.empty(fn.glob(install_path)) > 0 then
 	packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
 end
@@ -76,16 +79,14 @@ require('packer').startup(function()
 
 	-- Completion
 	use {
-		'neoclide/coc.nvim',
-		branch = 'release',
-		event = "BufWinEnter",
-		run = require("plugins.coc").setup,
-		config = [[ require("plugins.coc").config() ]],
-		requires = {
-			'SirVer/ultisnips',
-			requires = { 'honza/vim-snippets' },
-			config = [[ require("plugins.snips").config() ]]
-		}
+		'dense-analysis/ale',
+		config = [[ require("plugins.ale").config() ]]
+	}
+
+	use {
+		'SirVer/ultisnips',
+		requires = { "honza/vim-snippets" },
+		config = [[ require("plugins.snips").config() ]]
 	}
 
 	-- Theme
@@ -94,6 +95,10 @@ require('packer').startup(function()
 		requires = { "vim-airline/vim-airline" },
 		config = [[ require("plugins.theme").config() ]]
 	}
+
+	if utils.isLangActive("haskell") then
+		use "neovimhaskell/haskell-vim"
+	end
 
 	if packer_bootstrap then
 		print("Installing plugins...")
