@@ -132,7 +132,10 @@ end
 
 function M.debug_toggle()
 	if check_debug() then os.remove(debug_file)
-	else local f = io.open(debug_file, "w") f:close()
+	else
+		local f = io.open(debug_file, "w")
+		if f == nil then print("Error creating debug file!")
+		else f:close() end
 	end
 end
 
