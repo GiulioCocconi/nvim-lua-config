@@ -77,12 +77,6 @@ require('packer').startup(function()
 		requires = {'tpope/vim-repeat'}
 	}
 
-	-- Completion
-	use {
-		'dense-analysis/ale',
-		config = [[ require("plugins.ale").config() ]]
-	}
-
 	use {
 		'SirVer/ultisnips',
 		requires = { "honza/vim-snippets" },
