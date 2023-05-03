@@ -3,13 +3,15 @@ local utils = require("core.utils")
 local fn = vim.fn
 local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 
+local packer_bootstrap = nil
+
 if fn.empty(fn.glob(install_path)) > 0 then
 	packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
 end
 
 vim.cmd [[packadd packer.nvim]]
 
-require('packer').startup(function()
+require('packer').startup(function(use)
 	use "wbthomason/packer.nvim"
 
 	use 'nathom/filetype.nvim' --Faster load time
@@ -63,7 +65,8 @@ require('packer').startup(function()
 	--Greeter
 	use {
 		'glepnir/dashboard-nvim',
-		config = [[ require("plugins.dashboard").config() ]]
+		event = 'VimEnter',
+		 config = [[ require("plugins.dashboard").config() ]]
 	}
 
 	use {
@@ -91,7 +94,7 @@ require('packer').startup(function()
 			{                                      -- Optional
 				'williamboman/mason.nvim',
 				run = function()
-					pcall(vim.cmd, 'MasonUpdate')
+					vim.cmd('MasonUpdate')
 				end,
 			},
 			{'williamboman/mason-lspconfig.nvim'}, -- Optional
